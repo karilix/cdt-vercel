@@ -1,4 +1,6 @@
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
 function formatTime() {
   const now = new Date();
@@ -6,6 +8,7 @@ function formatTime() {
     timeZone: 'America/Chicago',
     hour: 'numeric',
     minute: '2-digit',
+    second: '2-digit',
     hour12: true
   }).format(now);
 }
@@ -39,7 +42,7 @@ function buildSvg() {
     </clipPath>
   </defs>
 
-  <image href="https://i.pinimg.com/1200x/3e/8f/da/3e8fda5442054fa05518de543da08fbb.jpg"
+  <image href="/background.svg"
          x="0" y="0" width="800" height="300"
          preserveAspectRatio="xMidYMid slice"
          clip-path="url(#roundedClip)" />
@@ -61,14 +64,31 @@ function buildSvg() {
 }
 
 const server = http.createServer((req, res) => {
-  if (req.url === '/favicon.ico') {
-    res.writeHead(204);
-    res.end();
+  const urlPath = req.url === '/' ? '/clock.svg' : req.url;
+  const safePath = path.normalize(urlPath).replace(/^\/+/, '');
+
+  if (safePath === 'clock.svg') {
+    res.writeHead(200, { 'Content-Type': 'image/svg+xml; charset=utf-8' });
+    res.end(buildSvg());
     return;
   }
 
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml; charset=utf-8' });
-  res.end(buildSvg());
+  if (safePath === 'background.svg') {
+    const filePath = path.join(__dirname, 'background.svg');
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404);
+        res.end('Not found');
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'image/svg+xml; charset=utf-8' });
+      res.end(data);
+    });
+    return;
+  }
+
+  res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.end('Not found');
 });
 
 const PORT = process.env.PORT || 3000;
