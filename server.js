@@ -8,7 +8,6 @@ function formatTime() {
     timeZone: 'America/Chicago',
     hour: 'numeric',
     minute: '2-digit',
-    second: '2-digit',
     hour12: true
   }).format(now);
 }
@@ -42,7 +41,7 @@ function buildSvg() {
     </clipPath>
   </defs>
 
-  <image href="YOUR_IMAGE_URL_HERE"
+  <image href="https://i.pinimg.com/1200x/3e/8f/da/3e8fda5442054fa05518de543da08fbb.jpg"
          x="0" y="0" width="800" height="300"
          preserveAspectRatio="xMidYMid slice"
          clip-path="url(#roundedClip)" />
