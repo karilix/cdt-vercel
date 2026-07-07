@@ -41,7 +41,7 @@ function buildSvg() {
     </clipPath>
   </defs>
 
-  <image href="file:///C:/Users/penny/OneDrive/Desktop/image%20for%20clock.svg"
+  <image href="https://i.ibb.co/ycp6Jgzt/image-for-clock.jpg"
          x="0" y="0" width="800" height="300"
          preserveAspectRatio="xMidYMid slice"
          clip-path="url(#roundedClip)" />
