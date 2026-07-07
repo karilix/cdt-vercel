@@ -8,7 +8,6 @@ function formatTime() {
     timeZone: 'America/Chicago',
     hour: 'numeric',
     minute: '2-digit',
-    second: '2-digit',
     hour12: true
   }).format(now);
 }
@@ -35,7 +34,6 @@ function buildSvg() {
   const label = formatLabel();
 
   return `
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
 
   <text x="400" y="100" text-anchor="middle"
         font-family="Segoe UI, Arial, sans-serif"
