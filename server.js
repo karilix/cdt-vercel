@@ -8,6 +8,7 @@ function formatTime() {
     timeZone: 'America/Chicago',
     hour: 'numeric',
     minute: '2-digit',
+    second: '2-digit',
     hour12: true
   }).format(now);
 }
@@ -41,7 +42,7 @@ function buildSvg() {
     </clipPath>
   </defs>
 
-  <image href="https://i.ibb.co/ycp6Jgzt/image-for-clock.jpg"
+  <image href="YOUR_IMAGE_URL_HERE"
          x="0" y="0" width="800" height="300"
          preserveAspectRatio="xMidYMid slice"
          clip-path="url(#roundedClip)" />
