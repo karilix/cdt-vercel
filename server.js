@@ -35,6 +35,19 @@ function buildSvg() {
 
   return `
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+<defs>
+  <clipPath id="roundedClip">
+    <rect x="0" y="0" width="800" height="300" rx="24" ry="24" />
+  </clipPath>
+</defs>
+
+ <image href="/background.svg"
+       x="0" y="0"
+       width="800" height="300"
+       preserveAspectRatio="xMidYMid slice"
+       clip-path="url(#roundedClip)" /> />
+
+  <rect width="100%" height="100%" rx="24" fill="rgba(15,23,42,0.02)" />
 
   <text x="400" y="100" text-anchor="middle"
         font-family="Segoe UI, Arial, sans-serif"
