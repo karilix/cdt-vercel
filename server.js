@@ -42,7 +42,7 @@ function buildSvg() {
     </clipPath>
   </defs>
 
-  <image href="YOUR_IMAGE_URL_HERE"
+  <image href= "/background.svg" ... />"
          x="0" y="0" width="800" height="300"
          preserveAspectRatio="xMidYMid slice"
          clip-path="url(#roundedClip)" />
